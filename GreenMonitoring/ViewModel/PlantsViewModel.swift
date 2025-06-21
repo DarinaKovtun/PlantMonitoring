@@ -14,6 +14,7 @@ class PlantsViewModel: ObservableObject {
     @Published var plants: [Plant] = []
     private let db = Firestore.firestore()
 
+  
     func fetchPlants(userId: String) {
         db.collection("users").document(userId).collection("plants")
             .addSnapshotListener { snapshot, error in
@@ -27,6 +28,7 @@ class PlantsViewModel: ObservableObject {
             }
     }
 
+    /// Видалення рослини
     func deletePlants(at offsets: IndexSet, userId: String) {
         offsets.forEach { index in
             if let plantId = plants[index].id {
@@ -40,25 +42,21 @@ class PlantsViewModel: ObservableObject {
         plants.remove(atOffsets: offsets)
     }
 
-    func addPlant(name: String, type: PlantType, moisture: Int, light: Int, userId: String) {
-        let newPlant = Plant(
-            id: UUID().uuidString,
-            name: name,
-            type: type,
-            moistureLevel: moisture,
-            lightLevel: light
-        )
+    /// Додавання нової рослини (з усіма параметрами, включаючи порогові значення)
+    func addPlant(_ plant: Plant, userId: String) {
+        guard let plantId = plant.id else { return }
         do {
             try db.collection("users")
                 .document(userId)
                 .collection("plants")
-                .document(newPlant.id!)
-                .setData(from: newPlant)
+                .document(plantId)
+                .setData(from: plant)
         } catch {
             print("Error adding plant: \(error.localizedDescription)")
         }
     }
 
+    /// Оновлення існуючої рослини
     func updatePlant(_ plant: Plant, userId: String) {
         guard let plantId = plant.id else { return }
         do {

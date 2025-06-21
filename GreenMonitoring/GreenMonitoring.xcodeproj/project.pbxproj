@@ -36,6 +36,7 @@
 		C0A9C3182E03E73D0039D33E /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9C3172E03E73B0039D33E /* StatsView.swift */; };
 		C0A9C31A2E03E7530039D33E /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9C3192E03E7510039D33E /* StatsViewModel.swift */; };
 		C0A9C31F2E03E83D0039D33E /* MoistureRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9C31E2E03E83B0039D33E /* MoistureRecord.swift */; };
+		C0A9C3252E05214C0039D33E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A9C3242E0521360039D33E /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		C0A9C3172E03E73B0039D33E /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		C0A9C3192E03E7510039D33E /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		C0A9C31E2E03E83B0039D33E /* MoistureRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoistureRecord.swift; sourceTree = "<group>"; };
+		C0A9C3242E0521360039D33E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,20 +87,9 @@
 		C0A16ADD2DEA3F6D00ADFD39 = {
 			isa = PBXGroup;
 			children = (
-				C0A9C31E2E03E83B0039D33E /* MoistureRecord.swift */,
-				C0A9C3192E03E7510039D33E /* StatsViewModel.swift */,
-				C0A9C3172E03E73B0039D33E /* StatsView.swift */,
-				C0A9C3152E03E2AF0039D33E /* AddEditPlantView.swift */,
-				C0A16B622DEE3CEE00ADFD39 /* PlantsViewModel.swift */,
-				C0A16B602DEE3CCF00ADFD39 /* PlantRowView.swift */,
-				C0A16B5E2DEE3B6400ADFD39 /* PlantsView.swift */,
-				C0A16B5C2DEE3B4D00ADFD39 /* PlantService.swift */,
-				C0A16B582DEE3A6300ADFD39 /* PlantModel.swift */,
-				C0A16B562DEE1FD500ADFD39 /* SplashScreenView.swift */,
-				C0A16B542DEE19FC00ADFD39 /* MainTabView.swift */,
-				C0A16B522DEE19EE00ADFD39 /* RegisterView.swift */,
-				C0A16B502DEE19DE00ADFD39 /* LoginView.swift */,
-				C0A16B4E2DEE19CD00ADFD39 /* AuthViewModel.swift */,
+				C0B2E6DE2E064F7500D5FFB3 /* ViewModel */,
+				C0B2E6D82E064F1A00D5FFB3 /* View */,
+				C0B2E6DF2E064F9500D5FFB3 /* Model */,
 				C0A16B102DEB65EE00ADFD39 /* Firebase */,
 				C0A16AE82DEA3F6D00ADFD39 /* GreenMonitoring */,
 				C0A16AE72DEA3F6D00ADFD39 /* Products */,
@@ -147,6 +138,82 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0B2E6D82E064F1A00D5FFB3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C0B2E6DC2E064F4E00D5FFB3 /* SettingsView */,
+				C0B2E6DB2E064F4400D5FFB3 /* StatisticView */,
+				C0B2E6DA2E064F3700D5FFB3 /* PlantView */,
+				C0B2E6DD2E064F5D00D5FFB3 /* MainView */,
+				C0B2E6D92E064F2800D5FFB3 /* AuthView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C0B2E6D92E064F2800D5FFB3 /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				C0A16B522DEE19EE00ADFD39 /* RegisterView.swift */,
+				C0A16B502DEE19DE00ADFD39 /* LoginView.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
+		C0B2E6DA2E064F3700D5FFB3 /* PlantView */ = {
+			isa = PBXGroup;
+			children = (
+				C0A9C3152E03E2AF0039D33E /* AddEditPlantView.swift */,
+				C0A16B602DEE3CCF00ADFD39 /* PlantRowView.swift */,
+				C0A16B5E2DEE3B6400ADFD39 /* PlantsView.swift */,
+			);
+			path = PlantView;
+			sourceTree = "<group>";
+		};
+		C0B2E6DB2E064F4400D5FFB3 /* StatisticView */ = {
+			isa = PBXGroup;
+			children = (
+				C0A9C3172E03E73B0039D33E /* StatsView.swift */,
+			);
+			path = StatisticView;
+			sourceTree = "<group>";
+		};
+		C0B2E6DC2E064F4E00D5FFB3 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				C0A9C3242E0521360039D33E /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		C0B2E6DD2E064F5D00D5FFB3 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				C0A16B562DEE1FD500ADFD39 /* SplashScreenView.swift */,
+				C0A16B542DEE19FC00ADFD39 /* MainTabView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		C0B2E6DE2E064F7500D5FFB3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C0A9C3192E03E7510039D33E /* StatsViewModel.swift */,
+				C0A16B622DEE3CEE00ADFD39 /* PlantsViewModel.swift */,
+				C0A16B4E2DEE19CD00ADFD39 /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C0B2E6DF2E064F9500D5FFB3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0A16B5C2DEE3B4D00ADFD39 /* PlantService.swift */,
+				C0A16B582DEE3A6300ADFD39 /* PlantModel.swift */,
+				C0A9C31E2E03E83B0039D33E /* MoistureRecord.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +304,7 @@
 				C0A16B4F2DEE19CD00ADFD39 /* AuthViewModel.swift in Sources */,
 				C0A16AEC2DEA3F6D00ADFD39 /* ContentView.swift in Sources */,
 				C0A16B122DEB65FD00ADFD39 /* FirebaseManager.swift in Sources */,
+				C0A9C3252E05214C0039D33E /* SettingsView.swift in Sources */,
 				C0A16B612DEE3CCF00ADFD39 /* PlantRowView.swift in Sources */,
 				C0A9C3182E03E73D0039D33E /* StatsView.swift in Sources */,
 				C0A16B532DEE19EE00ADFD39 /* RegisterView.swift in Sources */,

@@ -16,16 +16,21 @@ enum PlantType: String, CaseIterable, Identifiable, Codable {
 }
 
 struct Plant: Identifiable, Codable {
-    @DocumentID var id: String?  // id документа из Firestore
-    let name: String
-    let type: PlantType
+    @DocumentID var id: String?
+    var name: String
+    var type: PlantType
     var moistureLevel: Int
     var lightLevel: Int
 
+    // 🔧 нові порогові значення
+    var moistureThreshold: Int
+    var lightThreshold: Int
+
     var needsWater: Bool {
-        moistureLevel < 30
+        moistureLevel < moistureThreshold
     }
+
     var needsLight: Bool {
-        lightLevel < 40
+        lightLevel < lightThreshold
     }
 }

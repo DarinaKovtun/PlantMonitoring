@@ -6,22 +6,26 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MainTabView: View {
-    let userEmail = "mary@gmail.com"
     var userId: String {
-        userEmail.replacingOccurrences(of: ".", with: "_")
+        Auth.auth().currentUser?.email?.replacingOccurrences(of: ".", with: "_") ?? "unknown_user"
     }
 
     var body: some View {
         TabView {
             PlantsView(userId: userId)
                 .tabItem { Label("Рослини", systemImage: "leaf") }
+
             StatsView(userId: userId)
                 .tabItem { Label("Статистика", systemImage: "chart.bar") }
-            Text("⚙️ Налаштування").tabItem { Label("Налаштування", systemImage: "gear") }
+
+            SettingsView(userId: userId)
+                .tabItem { Label("Налаштування", systemImage: "gear") }
         }
     }
 }
 
+   
 

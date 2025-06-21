@@ -4,7 +4,6 @@
 //
 //  Created by Darina Kovtun on 19.06.2025.
 //
-
 import SwiftUI
 
 struct AddEditPlantView: View {
@@ -17,6 +16,8 @@ struct AddEditPlantView: View {
     @State private var type: PlantType = .rose
     @State private var moisture: Double = 50
     @State private var light: Double = 50
+    @State private var moistureThreshold: Double = 30
+    @State private var lightThreshold: Double = 40
 
     var body: some View {
         NavigationView {
@@ -48,23 +49,37 @@ struct AddEditPlantView: View {
                 }
                 .padding(.horizontal)
 
+                // ➕ Пороги вологості та освітленості
+                VStack(alignment: .leading) {
+                    Text("Поріг вологості: \(Int(moistureThreshold))%")
+                        .font(.subheadline)
+                    Slider(value: $moistureThreshold, in: 10...80, step: 1)
+                }
+                .padding(.horizontal)
+
+                VStack(alignment: .leading) {
+                    Text("Поріг освітленості: \(Int(lightThreshold))%")
+                        .font(.subheadline)
+                    Slider(value: $lightThreshold, in: 10...100, step: 1)
+                }
+                .padding(.horizontal)
+
                 Button(action: {
-                    let updatedPlant = Plant(
+                    let plant = Plant(
                         id: plantToEdit?.id ?? UUID().uuidString,
                         name: name,
                         type: type,
                         moistureLevel: Int(moisture),
-                        lightLevel: Int(light)
+                        lightLevel: Int(light),
+                        moistureThreshold: Int(moistureThreshold),
+                        lightThreshold: Int(lightThreshold)
                     )
 
                     if plantToEdit != nil {
-                        viewModel.updatePlant(updatedPlant, userId: userId)
+                        viewModel.updatePlant(plant, userId: userId)
                     } else {
                         viewModel.addPlant(
-                            name: updatedPlant.name,
-                            type: updatedPlant.type,
-                            moisture: updatedPlant.moistureLevel,
-                            light: updatedPlant.lightLevel,
+                            plant,
                             userId: userId
                         )
                     }
@@ -89,6 +104,8 @@ struct AddEditPlantView: View {
                     type = plant.type
                     moisture = Double(plant.moistureLevel)
                     light = Double(plant.lightLevel)
+                    moistureThreshold = Double(plant.moistureThreshold)
+                    lightThreshold = Double(plant.lightThreshold)
                 }
             }
         }
